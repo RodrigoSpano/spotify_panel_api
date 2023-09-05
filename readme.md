@@ -1,1 +1,1 @@
-el auth me redirecciona al cb_uri el cual me devuelve un code, ese code tengo q mandarselo por query al path de user_token para que me entregue el access_token con el cual hacer las peticiones
+/api/auth me redirecciona al cb_uri(/api/auth/callback) el cual me devuelve un code, ese code tengo q mandarselo por query al path de user_token(/api/auth/user_token) para que me entregue el access_token con el cual hacer las peticiones

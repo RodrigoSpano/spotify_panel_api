@@ -3,7 +3,7 @@ const axios = require("axios");
 const authorization_redirect = async (req, res) => {
   try {
     const scope = 'user-read-private user-read-email user-top-read';
-    res.redirect(`https://accounts.spotify.com/authorize?client_id=${process.env.SPOTIFY_ID}&response_type=code&redirect_uri=${process.env.SPOTIFY_CB}&scope=${scope}&state=njasd7jsd9sda`)
+    res.redirect(`https://accounts.spotify.com/authorize?client_id=${process.env.SPOTIFY_ID}&client_secret=${process.env.SPOTIFY_SECRET}&response_type=code&redirect_uri=${process.env.SPOTIFY_CB}&scope=${scope}&state=njasd7jsd9sda`)
   } catch (error) {
     return res.status(500).json({ error: error.message })
   }

@@ -9,12 +9,20 @@ const authorization_redirect = async (req, res) => {
   }
 }
 
-const auth_callback = (req, res) => {
-  return res.status(200).json(req.query)
-  //todo, redireccionar a un path del cliente y pasarle el token por query
+const auth_callback = async (req, res) => {
+  const { code } = req.query
+  const { data } = await axios.post('https://accounts.spotify.com/api/token', { grant_type: 'authorization_code', code, redirect_uri: process.env.SPOTIFY_CB, client_id: process.env.SPOTIFY_ID, client_secret: process.env.SPOTIFY_SECRET },
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    }
+  ) //? retorna user access token y refresh token
+  return res.status(200).redirect(`${process.env.CLIENT_URI}/auth?token=${data.access_token}`)
+
 }
 
-const get_user_token = async (req, res) => {
+const get_user_token = async (req, res) => { //! no esta en uso pero sirve para uso personal
   try {
     const { code } = req.query
     const { data } = await axios.post('https://accounts.spotify.com/api/token', { grant_type: 'authorization_code', code, redirect_uri: process.env.SPOTIFY_CB, client_id: process.env.SPOTIFY_ID, client_secret: process.env.SPOTIFY_SECRET },

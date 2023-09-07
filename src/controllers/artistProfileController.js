@@ -15,4 +15,6 @@ const getArtistProfile = async (req, res) => {
   }
 }
 
-module.exports = getArtistProfile
+
+
+module.exports = { getArtistProfile }

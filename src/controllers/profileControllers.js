@@ -24,7 +24,6 @@ const getTopArtists = async (req, res) => {
         Authorization: `Bearer ${token}`
       }
     })
-    console.log(data)
     return res.status(200).json(data)
 
   } catch (error) {
@@ -40,7 +39,6 @@ const getTopTracks = async (req, res) => {
         Authorization: `Bearer ${token}`
       }
     })
-    console.log(data)
     return res.status(200).json(data)
 
   } catch (error) {
